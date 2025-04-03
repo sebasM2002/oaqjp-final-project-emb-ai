@@ -9,7 +9,7 @@
 from flask import Flask, request, render_template, jsonify
 from final_project.emotion_detection import emotion_detector as ed
 
-app = Flask("Final Project")
+app = Flask(__name__)
 
 @app.route("/")
 def home():
@@ -41,3 +41,6 @@ def emotiondetect():
         f"The dominant emotion is {result['dominant_emotion']}.\n"
     )
     return response_message
+
+if __name__ == "__main__":
+    app.run(host = "0.0.0.0", port = 5000)
